@@ -1,10 +1,10 @@
-package br.com.movieapp.framework.data.remote.response
+package br.com.movieapp.core.data.remote.response
 
-import br.com.movieapp.framework.data.remote.model.BelongsToCollection
-import br.com.movieapp.framework.data.remote.model.GenresItem
-import br.com.movieapp.framework.data.remote.model.ProductionCompaniesItem
-import br.com.movieapp.framework.data.remote.model.ProductionCountriesItem
-import br.com.movieapp.framework.data.remote.model.SpokenLanguagesItem
+import br.com.movieapp.core.data.remote.model.BelongsToCollection
+import br.com.movieapp.core.data.remote.model.GenresItem
+import br.com.movieapp.core.data.remote.model.ProductionCompaniesItem
+import br.com.movieapp.core.data.remote.model.ProductionCountriesItem
+import br.com.movieapp.core.data.remote.model.SpokenLanguagesItem
 import com.google.gson.annotations.SerializedName
 
 data class MovieDetailsResponse(

@@ -1,8 +1,8 @@
-package br.com.movieapp.framework.data.remote
+package br.com.movieapp.core.data.remote
 
-import br.com.movieapp.framework.data.remote.response.MovieResponse
-import br.com.movieapp.framework.data.remote.response.MovieSearchResponse
-import br.com.movieapp.framework.data.remote.response.MovieDetailsResponse
+import br.com.movieapp.core.data.remote.response.MovieResponse
+import br.com.movieapp.core.data.remote.response.MovieSearchResponse
+import br.com.movieapp.core.data.remote.response.MovieDetailsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Path

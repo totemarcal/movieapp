@@ -1,7 +1,7 @@
-package br.com.movieapp.framework.data.remote
+package br.com.movieapp.core.data.remote
 
 import br.com.movieapp.BuildConfig
-import br.com.movieapp.framework.util.Constant
+import br.com.movieapp.core.util.Constant
 import okhttp3.Interceptor
 import okhttp3.Response
 
