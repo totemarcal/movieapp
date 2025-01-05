@@ -15,7 +15,7 @@ interface MovieService {
     ): MovieResponse
 
     @GET("search/multi")
-    suspend fun getPopularMovies(
+    suspend fun seacrhMovies(
         @Query("page") page: Int,
         @Query("query") query: String
     ): MovieSearchResponse

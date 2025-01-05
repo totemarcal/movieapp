@@ -9,6 +9,6 @@ data class MovieSearchResponse(
     @SerializedName("total_pages")
     val totalPages: Int = 0,
     @SerializedName("results")
-    val results: List<SearchResultsIem>?,
+    val results: List<SearchResultsIem>,
     @SerializedName("total_results")
     val totalResults: Int = 0)
