@@ -1,4 +1,4 @@
-package br.com.movieapp.movie_popular_feature.presentation
+package br.com.movieapp.search_movie_feature.presentation
 
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -7,38 +7,43 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.R
-import br.com.movieapp.core.util.UtilFunctions
-import br.com.movieapp.movie_popular_feature.presentation.components.MovieContent
-import br.com.movieapp.movie_popular_feature.presentation.state.MoviePopularState
+import br.com.movieapp.core.presentation.navigation.BottomNavItem.MovieFavorite.title
 import br.com.movieapp.movie_popular_feature.presentation.state.MovieSearchState
+import br.com.movieapp.search_movie_feature.presentation.components.SearchContent
 import br.com.movieapp.ui.theme.black
 import br.com.movieapp.ui.theme.white
 
 @Composable
-fun MoviePopularScreen(
-    uiState: MoviePopularState,
+fun MovieSearchScreen(
+    uiState: MovieSearchState,
+    onEvent: (MovieSearchEvent) -> Unit,
+    onFetch: (String) -> Unit,
     navigateToDetailMovie: (Int) -> Unit
 ) {
-    val movies = uiState.movies.collectAsLazyPagingItems()
-
+    val pagingMovies = uiState.movies.collectAsLazyPagingItems()
     Scaffold (
         topBar = {
             TopAppBar (
                 title = {
                     Text(
-                        text = stringResource(id = R.string.popular_movies),
+                        text = stringResource(id = R.string.search_movies),
                         color = white
-                        )
+                    )
                 },
                 backgroundColor = black
             )
         },
-        content = { paddingValues ->
-            MovieContent(
-                pagingMovies = movies,
+        content =  { paddingValues ->
+            SearchContent(
                 paddingValues = paddingValues,
-                onClick = { movieId ->
-                    UtilFunctions.logInfo("MOVIE_ID", movieId.toString())
+                pagingMovies = pagingMovies,
+                query = uiState.query,
+                onSearch = {
+                    onFetch(it) },
+                onEvent = {
+                          onEvent(it)
+                },
+                onDetail = {movieId ->
                     navigateToDetailMovie(movieId)
                 }
             )

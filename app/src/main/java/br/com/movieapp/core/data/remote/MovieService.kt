@@ -26,7 +26,7 @@ interface MovieService {
     ): MovieDetailsResponse
 
     @GET("movie/{movie_id}/similar")
-    suspend fun getPopularMovies(
+    suspend fun getMoviesSimilar(
         @Query("movie_id") movieId: Int,
         @Query("page") page: Int
     ): MovieResponse
