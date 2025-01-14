@@ -136,7 +136,7 @@ fun MovieDetailsContent(
                     .padding(horizontal = 8.dp)
             )
         }
-        if (isError.isNotEmpty()) {
+        if (!isError.isNotEmpty()) {
             Text(
                 text = isError,
                 color = MaterialTheme.colors.error,
