@@ -9,10 +9,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.R
-import br.com.movieapp.core.util.UtilFunctions
+import br.com.movieapp.core.domain.model.Movie
 import br.com.movieapp.movie_details_feature.presentation.components.MovieDetailsContent
 import br.com.movieapp.movie_details_feature.presentation.state.MovieDetailState
-import br.com.movieapp.movie_popular_feature.presentation.components.MovieContent
 import br.com.movieapp.ui.theme.black
 import br.com.movieapp.ui.theme.white
 
@@ -21,6 +20,8 @@ import br.com.movieapp.ui.theme.white
 fun MovieDetailScreen(
     id: Int?,
     uiState: MovieDetailState,
+    onAddFavorite: (Movie) -> Unit,
+    checkedFavorite: (MovieDetailsEvent.CheckedFavorite) -> Unit,
     getMovieDetail: (MovieDetailsEvent.GetMovieDetail) -> Unit
 ) {
     val pagingMovieSimilar = uiState.result.collectAsLazyPagingItems()
@@ -28,6 +29,7 @@ fun MovieDetailScreen(
     LaunchedEffect(key1 = true) {
         if (id != null) {
             getMovieDetail(MovieDetailsEvent.GetMovieDetail(id))
+            checkedFavorite(MovieDetailsEvent.CheckedFavorite(id))
         }
     }
     Scaffold (
@@ -49,8 +51,8 @@ fun MovieDetailScreen(
                 isLoading = uiState.isLoading,
                 isError = uiState.error,
                 iconColor = uiState.iconColor,
-                onAddFavorite = {
-
+                onAddFavorite = { movie ->
+                    onAddFavorite(movie)
                 }
             )
         }
